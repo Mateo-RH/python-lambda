@@ -1,0 +1,23 @@
+# serverless.yml
+
+service: numpy-test
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  numpy:
+    handler: handler.main
+    events:
+      - http:
+          path: ping
+          method: ANY
+
+plugins:
+  - serverless-offline
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
