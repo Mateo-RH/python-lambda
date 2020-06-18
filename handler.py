@@ -25,7 +25,10 @@ def main(event, context):
             
 
     if event["httpMethod"] == "POST":
-        data = json.loads(event['body'])
+        data_list = event['body'].split("&")
+        data = {}
+        for x in data_list:
+            data.update({x.split("=")[0]: x.split("=")[1]})
         try:
             first_name = data["first_name"]
             last_name = data["last_name"]
