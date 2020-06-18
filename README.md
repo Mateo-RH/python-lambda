@@ -32,16 +32,22 @@ You need to have installed the followings:
 
 5. Create a __package.json__: $npm init
 
-6. Install the plugins dependencies: $npm i serverless-python-requirements serverless-offline
+**6.** Install the plugins dependencies: $npm i serverless-python-requirements serverless-offline
 
-7. Configure your handler and serverless: check handler.py and serverless.yml for the configuration details
+**7.** Configure your handler and serverless: check handler.py and serverless.yml for the configuration details
 
-8. (Optional) for deployments you need aws credentials and configure it on serverless: $ serverless config credentials --provider aws --key YOUR_KEY --secret YOUR_SECRET
+**8.** (Optional) for deployments you need aws credentials and configure it on serverless: $ serverless config credentials --provider aws --key YOUR_KEY --secret YOUR_SECRET
 
 ### Commands
 
-* ** Offline test **
-$serverless offline
+* **Offline test**
 
-* ** AWS deploy **
+```
+$serverless offline
+```
+
+* **AWS deploy**
+
+```
 $serverless deploy
+```
