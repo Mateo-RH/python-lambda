@@ -15,28 +15,65 @@ You need to have installed the followings:
 
 ### Steps
 
-1. Install serverless: $npm install -g serverless
+**1.** Install serverless: 
 
-2. Create lambda aplication: $serverless create \
+```
+$npm install -g serverless
+```
+
+**2.** Create lambda aplication: 
+
+```
+$serverless create \
   --template aws-python3 \
   --name numpy-test \
   --path numpy-test
+```
 
   * [Other examples](https://github.com/serverless/examples)
 
-3. Create venv inside the project: $virtualenv venv --python=python3 or >python3 -m venv venv
+**3.** Create venv inside the project: 
 
-3.3.1 Activate venv: $source venv/bin/activate or >.\venv\Scripts\activate
+```
+$virtualenv venv --python=python3 or >python3 -m venv venv
+```
 
-4. Install your python packages and write down in the __requirements.txt__:  $pip install numpy && pip freeze > requirements.txt
+**3.3.1** Activate venv: 
 
-5. Create a __package.json__: $npm init
+```
+$source venv/bin/activate or >.\venv\Scripts\activate
+```
 
-**6.** Install the plugins dependencies: $npm i serverless-python-requirements serverless-offline
+**4.** Install your python packages and write down in the __requirements.txt__:  
 
-**7.** Configure your handler and serverless: check handler.py and serverless.yml for the configuration details
+```
+$pip install numpy && pip freeze > requirements.txt
+```
 
-**8.** (Optional) for deployments you need aws credentials and configure it on serverless: $ serverless config credentials --provider aws --key YOUR_KEY --secret YOUR_SECRET
+**5.** Create a __package.json__: 
+
+```
+$npm init
+```
+
+**6.** Install the plugins dependencies: 
+
+```
+$npm i serverless-python-requirements serverless-offline
+```
+
+**7.** Configure your handler and serverless: 
+
+```
+check handler.py and serverless.yml for the configuration details
+```
+
+**8.** (Optional) for deployments you need aws credentials and configure it on serverless: 
+
+```
+$ serverless config credentials --provider aws --key YOUR_KEY --secret YOUR_SECRET
+```
+
 
 ### Commands
 
