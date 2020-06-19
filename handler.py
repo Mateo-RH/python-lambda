@@ -1,43 +1,22 @@
 # handler.py
 
-import numpy as np
 import json
+import base64
+from io import BytesIO
+from openpyxl import load_workbook
 
 
 def main(event, context):
+    # Openpyxl
 
-    # This is just for test the external packages
-    a = np.arange(15).reshape(3, 5)
-    print("Your numpy array:")
-    print(a)
+    file_content = event["content"]
+    decrypted = base64.b64decode(file_content)
+    wb = load_workbook(filename=BytesIO(decrypted))
+    sheet = wb["questions"]
+    rows = sheet.max_row
 
-    # Here starts an example of how to handle a GET and POST params
-    first_name = "nombre_base"
-    last_name = "apellido_base"
+    message = 'Number of rows: {}!'.format(rows)
 
-    if event["httpMethod"] == "GET":
-        try:
-            first_name =  event["queryStringParameters"]["first_name"]
-            last_name =  event["queryStringParameters"]["last_name"]
-        except:
-            first_name = "nombre_get_except"
-            last_name = "apellido_get_except"
-            
-
-    if event["httpMethod"] == "POST":
-        data_list = event['body'].split("&")
-        data = {}
-        for x in data_list:
-            data.update({x.split("=")[0]: x.split("=")[1]})
-        try:
-            first_name = data["first_name"]
-            last_name = data["last_name"]
-        except:
-            first_name = "nombre_post_except"
-            last_name = "apellido_post_except"
-
-
-    message = 'Hello {} {}!'.format(first_name, last_name)
     body = {
         "message": message
     }
