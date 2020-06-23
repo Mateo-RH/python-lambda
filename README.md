@@ -32,7 +32,7 @@ $serverless create \
 
   * [Other examples](https://github.com/serverless/examples)
 
-**3.** Create venv inside the project: 
+**3.** Create venv for the project dependencies: 
 
 ```
 $virtualenv venv --python=python3 or >python3 -m venv venv
@@ -59,7 +59,7 @@ $npm init
 **6.** Install the plugins dependencies: 
 
 ```
-$npm i serverless-python-requirements serverless-offline
+$npm i --save-dev serverless-python-requirements serverless-offline
 ```
 
 **7.** Configure your handler and serverless: 
