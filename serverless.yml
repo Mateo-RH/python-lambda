@@ -1,18 +1,29 @@
 # serverless.yml
 
-service: numpy-test
+service: read-excel
 
 provider:
   name: aws
   runtime: python3.8
+  apiGateway:
+    binaryMediaTypes:
+      - 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+
 
 functions:
-  numpy:
+  read-excel:
     handler: handler.main
     events:
       - http:
-          path: ping
-          method: ANY
+          method: POST
+          path: upload
+          integration: lambda
+          request:
+            passThrough: WHEN_NO_TEMPLATES
+            template:
+              application/vnd.openxmlformats-officedocument.spreadsheetml.sheet: '{
+                "content": "$input.body"
+              }'
 
 plugins:
   - serverless-offline
